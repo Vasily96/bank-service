@@ -1,0 +1,38 @@
+services:
+  postgres_db:
+    image: postgres:17.3
+    container_name: db-bank-service
+    restart: always
+    environment:
+      POSTGRES_DB: bank-service
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  bank-service:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres_db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres_db:5432/bank-service
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+    restart: unless-stopped
+
+  redis:
+    image: redis:latest
+    container_name: demo-redis
+    ports:
+      - "6379:6379"
+
+volumes:
+  pgdata:
+
+

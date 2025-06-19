@@ -1,0 +1,471 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 005-insert-user
+      author: yourname
+      changes:
+        - insert:
+            tableName: user
+            columns:
+              - column:
+                  name: name
+                  value: "John Doe"
+              - column:
+                  name: date_of_birth
+                  value: "1990-05-15"
+              - column:
+                  name: password
+                  value: "{noop}password123"
+        - insert:
+            tableName: user
+            columns:
+              - column:
+                  name: name
+                  value: "Jane Smith"
+              - column:
+                  name: date_of_birth
+                  value: "1985-08-22"
+              - column:
+                  name: password
+                  value: "{noop}password123"
+        - insert:
+            tableName: user
+            columns:
+              - column:
+                  name: name
+                  value: "Alice Johnson"
+              - column:
+                  name: date_of_birth
+                  value: "1992-03-10"
+              - column:
+                  name: password
+                  value: "{noop}password123"
+        - insert:
+            tableName: user
+            columns:
+              - column:
+                  name: name
+                  value: "Bob Brown"
+              - column:
+                  name: date_of_birth
+                  value: "1988-12-01"
+              - column:
+                  name: password
+                  value: "{noop}password123"
+        - insert:
+            tableName: user
+            columns:
+              - column:
+                  name: name
+                  value: "Charlie Davis"
+              - column:
+                  name: date_of_birth
+                  value: "1995-11-20"
+              - column:
+                  name: password
+                  value: "{noop}password123"
+        - insert:
+            tableName: user
+            columns:
+              - column:
+                  name: name
+                  value: "Diana Wilson"
+              - column:
+                  name: date_of_birth
+                  value: "1993-07-05"
+              - column:
+                  name: password
+                  value: "{noop}password123"
+        - insert:
+            tableName: user
+            columns:
+              - column:
+                  name: name
+                  value: "Ethan Moore"
+              - column:
+                  name: date_of_birth
+                  value: "1991-09-14"
+              - column:
+                  name: password
+                  value: "{noop}password123"
+        - insert:
+            tableName: user
+            columns:
+              - column:
+                  name: name
+                  value: "Fiona Taylor"
+              - column:
+                  name: date_of_birth
+                  value: "1987-04-30"
+              - column:
+                  name: password
+                  value: "{noop}password123"
+        - insert:
+            tableName: user
+            columns:
+              - column:
+                  name: name
+                  value: "George Clark"
+              - column:
+                  name: date_of_birth
+                  value: "1994-06-18"
+              - column:
+                  name: password
+                  value: "{noop}password123"
+        - insert:
+            tableName: user
+            columns:
+              - column:
+                  name: name
+                  value: "Hannah Lewis"
+              - column:
+                  name: date_of_birth
+                  value: "1996-02-25"
+              - column:
+                  name: password
+                  value: "{noop}password123"
+
+
+  - changeSet:
+      id: 006-insert-account
+      author: yourname
+      changes:
+        - insert:
+            tableName: account
+            columns:
+              - column:
+                  name: user_id
+                  value: 1
+              - column:
+                  name: balance
+                  value: 1000.00
+              - column:
+                  name: initial_balance
+                  value: 1000.00
+        - insert:
+            tableName: account
+            columns:
+              - column:
+                  name: user_id
+                  value: 2
+              - column:
+                  name: balance
+                  value: 1500.00
+              - column:
+                  name: initial_balance
+                  value: 1500.00
+        - insert:
+            tableName: account
+            columns:
+              - column:
+                  name: user_id
+                  value: 3
+              - column:
+                  name: balance
+                  value: 2000.00
+              - column:
+                  name: initial_balance
+                  value: 2000.00
+        - insert:
+            tableName: account
+            columns:
+              - column:
+                  name: user_id
+                  value: 4
+              - column:
+                  name: balance
+                  value: 500.00
+              - column:
+                  name: initial_balance
+                  value: 500.00
+        - insert:
+            tableName: account
+            columns:
+              - column:
+                  name: user_id
+                  value: 5
+              - column:
+                  name: balance
+                  value: 3000.00
+              - column:
+                  name: initial_balance
+                  value: 3000.00
+        - insert:
+            tableName: account
+            columns:
+              - column:
+                  name: user_id
+                  value: 6
+              - column:
+                  name: balance
+                  value: 1200.00
+              - column:
+                  name: initial_balance
+                  value: 1200.00
+        - insert:
+            tableName: account
+            columns:
+              - column:
+                  name: user_id
+                  value: 7
+              - column:
+                  name: balance
+                  value: 800.00
+              - column:
+                  name: initial_balance
+                  value: 800.00
+        - insert:
+            tableName: account
+            columns:
+              - column:
+                  name: user_id
+                  value: 8
+              - column:
+                  name: balance
+                  value: 950.00
+              - column:
+                  name: initial_balance
+                  value: 950.00
+        - insert:
+            tableName: account
+            columns:
+              - column:
+                  name: user_id
+                  value: 9
+              - column:
+                  name: balance
+                  value: 1100.00
+              - column:
+                  name: initial_balance
+                  value: 1100.00
+        - insert:
+            tableName: account
+            columns:
+              - column:
+                  name: user_id
+                  value: 10
+              - column:
+                  name: balance
+                  value: 2500.00
+              - column:
+                  name: initial_balance
+                  value: 2500.00
+
+
+  - changeSet:
+      id: 007-insert-emails
+      author: yourname
+      changes:
+        - insert:
+            tableName: email_data
+            columns:
+              - column:
+                  name: user_id
+                  value: 1
+              - column:
+                  name: email
+                  value: "john.doe@example.com"
+        - insert:
+            tableName: email_data
+            columns:
+              - column:
+                  name: user_id
+                  value: 1
+              - column:
+                  name: email
+                  value: "john_personal@example.com"
+        - insert:
+            tableName: email_data
+            columns:
+              - column:
+                  name: user_id
+                  value: 2
+              - column:
+                  name: email
+                  value: "jane.smith@example.com"
+        - insert:
+            tableName: email_data
+            columns:
+              - column:
+                  name: user_id
+                  value: 2
+              - column:
+                  name: email
+                  value: "jane_work@example.com"
+        - insert:
+            tableName: email_data
+            columns:
+              - column:
+                  name: user_id
+                  value: 3
+              - column:
+                  name: email
+                  value: "alice.johnson@example.com"
+        - insert:
+            tableName: email_data
+            columns:
+              - column:
+                  name: user_id
+                  value: 4
+              - column:
+                  name: email
+                  value: "bob.brown@example.com"
+        - insert:
+            tableName: email_data
+            columns:
+              - column:
+                  name: user_id
+                  value: 5
+              - column:
+                  name: email
+                  value: "charlie.davis@example.com"
+        - insert:
+            tableName: email_data
+            columns:
+              - column:
+                  name: user_id
+                  value: 6
+              - column:
+                  name: email
+                  value: "diana.wilson@example.com"
+        - insert:
+            tableName: email_data
+            columns:
+              - column:
+                  name: user_id
+                  value: 7
+              - column:
+                  name: email
+                  value: "ethan.moore@example.com"
+        - insert:
+            tableName: email_data
+            columns:
+              - column:
+                  name: user_id
+                  value: 8
+              - column:
+                  name: email
+                  value: "fiona.taylor@example.com"
+        - insert:
+            tableName: email_data
+            columns:
+              - column:
+                  name: user_id
+                  value: 9
+              - column:
+                  name: email
+                  value: "george.clark@example.com"
+        - insert:
+            tableName: email_data
+            columns:
+              - column:
+                  name: user_id
+                  value: 10
+              - column:
+                  name: email
+                  value: "hannah.lewis@example.com"
+
+
+  - changeSet:
+      id: 008-insert-phones
+      author: yourname
+      changes:
+        - insert:
+            tableName: phone_data
+            columns:
+              - column:
+                  name: user_id
+                  value: 1
+              - column:
+                  name: phone
+                  value: "79201234567"
+        - insert:
+            tableName: phone_data
+            columns:
+              - column:
+                  name: user_id
+                  value: 1
+              - column:
+                  name: phone
+                  value: "79211234567"
+        - insert:
+            tableName: phone_data
+            columns:
+              - column:
+                  name: user_id
+                  value: 2
+              - column:
+                  name: phone
+                  value: "79222334455"
+        - insert:
+            tableName: phone_data
+            columns:
+              - column:
+                  name: user_id
+                  value: 3
+              - column:
+                  name: phone
+                  value: "79233445566"
+        - insert:
+            tableName: phone_data
+            columns:
+              - column:
+                  name: user_id
+                  value: 4
+              - column:
+                  name: phone
+                  value: "79244556677"
+        - insert:
+            tableName: phone_data
+            columns:
+              - column:
+                  name: user_id
+                  value: 5
+              - column:
+                  name: phone
+                  value: "79255667788"
+        - insert:
+            tableName: phone_data
+            columns:
+              - column:
+                  name: user_id
+                  value: 6
+              - column:
+                  name: phone
+                  value: "79266778899"
+        - insert:
+            tableName: phone_data
+            columns:
+              - column:
+                  name: user_id
+                  value: 7
+              - column:
+                  name: phone
+                  value: "79277889900"
+        - insert:
+            tableName: phone_data
+            columns:
+              - column:
+                  name: user_id
+                  value: 8
+              - column:
+                  name: phone
+                  value: "79288990011"
+        - insert:
+            tableName: phone_data
+            columns:
+              - column:
+                  name: user_id
+                  value: 9
+              - column:
+                  name: phone
+                  value: "79299001122"
+        - insert:
+            tableName: phone_data
+            columns:
+              - column:
+                  name: user_id
+                  value: 10
+              - column:
+                  name: phone
+                  value: "79300112233"
