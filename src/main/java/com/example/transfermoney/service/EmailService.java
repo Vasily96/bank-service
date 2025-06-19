@@ -55,15 +55,25 @@ public class EmailService {
     public EmailDto updateEmail(Long userId, EmailUpdateRequest request) {
         log.info("Updating email from '{}' to '{}' for user ID: {}", request.getOldEmail(), request.getNewEmail(), userId);
 
-        EmailData emailData = emailDataRepository.findByUserAndEmail(userId, request.getOldEmail())
+        EmailData existing = emailDataRepository.findByEmail(request.getOldEmail())
                 .orElseThrow(() -> new RuntimeException("Email not found for this user"));
 
-        if (emailDataRepository.findByEmail(request.getNewEmail()).isPresent()) {
-            throw new RuntimeException("New email is already taken");
+        if (!existing.getUser().getId().equals(userId)) {
+            throw new RuntimeException("Phone does not belong to this user");
         }
 
-        emailData.setEmail(request.getNewEmail());
-        EmailData updateEmail = emailDataRepository.save(emailData);
+        if (!existing.getEmail().equals(request.getOldEmail())) {
+            throw new RuntimeException("Old email does not match");
+        }
+
+        if (!request.getNewEmail().equals(existing.getEmail())) {
+            if (emailDataRepository.findByEmail(request.getNewEmail()).isPresent()) {
+                throw new RuntimeException("New email is already taken");
+            }
+        }
+
+        existing.setEmail(request.getNewEmail());
+        EmailData updateEmail = emailDataRepository.save(existing);
         log.info("Email successfully updated to '{}'", updateEmail.getEmail());
         return emailMapper.toDto(updateEmail);
     }

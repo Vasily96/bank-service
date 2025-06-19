@@ -14,7 +14,6 @@ public interface EmailDataRepository extends JpaRepository<EmailData, Long> {
      */
     List<EmailData> findAllByUserId(Long userId);
 
-    Optional<EmailData> findByUserAndEmail(Long userId, String email);
 
     Long countByEmail(String email);
 }

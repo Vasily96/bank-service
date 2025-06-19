@@ -13,15 +13,12 @@ RUN mvn clean package -DskipTests
 
 # Runtime stage
 FROM eclipse-temurin:21-jre-alpine
-RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 
 WORKDIR /app
 
 # Copy JAR file (matches any SNAPSHOT or versioned jar)
 COPY --from=build /build/target/transfer-money-*.jar app.jar
 
-RUN chown -R appuser:appgroup /app
-USER appuser
 
 EXPOSE 8080
 
