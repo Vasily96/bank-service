@@ -1,30 +1,38 @@
 services:
-  postgres_db:
-    image: postgres:17.3
-    container_name: db-bank-service
-    restart: always
-    environment:
-      POSTGRES_DB: bank-service
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-    ports:
-      - 5432:5432
-    volumes:
-      - pgdata:/var/lib/postgresql/data
 
-  bank-service:
+  server:
     build:
       context: ..
       dockerfile: docker/Dockerfile
+    container_name: server
     ports:
       - "8080:8080"
-    depends_on:
-      - postgres_db
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres_db:5432/bank-service
-      SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: postgres
-    restart: unless-stopped
+      - SPRING_PROFILES_ACTIVE=default,docker
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: always
+    networks:
+      internal:
+
+  postgres:
+    container_name: postgres
+    image: postgres:16
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=bank-service
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 1s
+      timeout: 5s
+      retries: 20
+      start_period: 5s
+    networks:
+      - internal
 
   redis:
     image: redis:latest
@@ -32,7 +40,8 @@ services:
     ports:
       - "6379:6379"
 
-volumes:
-  pgdata:
+networks:
+  internal:
+    driver: bridge
 
 

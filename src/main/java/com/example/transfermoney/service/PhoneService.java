@@ -52,7 +52,7 @@ public class PhoneService {
     }
 
     @Transactional
-    @CacheEvict(value = "users", key = "#request.userId")
+    @CacheEvict(value = "users", key = "#userId")
     public PhoneDto updatePhone(Long userId, PhoneUpdateRequest request) {
         log.info("Updating phone ID: {} from '{}' to '{}'", request.getId(), request.getOldPhone(), request.getNewPhone());
         PhoneData existing = phoneDataRepository.findById(request.getId())

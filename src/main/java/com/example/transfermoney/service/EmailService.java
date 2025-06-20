@@ -51,7 +51,7 @@ public class EmailService {
     }
 
     @Transactional
-    @CacheEvict(value = "users", key = "#request.userId")
+    @CacheEvict(value = "users", key = "#userId")
     public EmailDto updateEmail(Long userId, EmailUpdateRequest request) {
         log.info("Updating email from '{}' to '{}' for user ID: {}", request.getOldEmail(), request.getNewEmail(), userId);
 
